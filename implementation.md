@@ -64,6 +64,15 @@ selectivity-ratio/
 
 ---
 
+## Key Concepts
+- **Selectivity Index (SI)**: `SI = 10^(pIC50_primary - pIC50_off)` converts the log-scale delta into a fold-change ratio of IC50 values; SI > 10 is meaningful, SI > 100 is highly selective
+- **Delta-pIC50**: Additive form `delta = pIC50_primary - pIC50_off` is directly interpretable on the log scale; positive values indicate selectivity for the primary target
+- **Selectivity window**: `min(delta_pIC50)` across all off-targets gives the worst-case selectivity for each compound, used for ranking
+- **Wide-to-long pivot**: `pd.melt` unpacks multi-target columns into (compound, off_target, delta) rows for grouped visualization
+- **Diverging heatmap**: `seaborn.heatmap` with `center=0` and RdYlGn colormap highlights selective (green) vs non-selective (red) compound-target combinations
+
+---
+
 ## 3. Input Format
 
 ### `data/activity.csv`
